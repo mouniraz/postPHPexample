@@ -6,11 +6,11 @@ include "bdd.php";
 $json = file_get_contents('php://input');
 
 // Converts it into a PHP object
-$data = json_decode($json);
+$postdata = json_decode($json);
 
 $query=$bdd->prepare("SELECT `username`,`email`
  FROM `admindb` WHERE `username`= :username");
-$user=$data->username;
+$user=$postdata->username;
 //$user="admin";
 $query->bindparam(":username",$user);
 $query->execute();
