@@ -26,18 +26,16 @@ class MyApp extends StatelessWidget {
 }
 
 Future<data> fetchData(username) async {
-  Map<String, String> body = {
-  'username': username};
+  
   //final response = await http.get(Uri.parse('http://192.168.1.18/sql/'));
-  var map = new Map<String, dynamic>();
-  map['username'] = username;
+
   final response = await http.post(
    Uri.parse('http://192.168.1.18/sql/'),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode({
-        'username':"admin"
+        'username':username
       }),
     );
   if (response.statusCode == 200) {
